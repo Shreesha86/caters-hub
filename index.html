@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caters Hub - Professional Catering Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: fadeInDown 1.2s forwards 0.3s;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #39d353, #2ea043);
+            animation: growLine 1.5s forwards 1.2s;
+        }
+
+        .slogan {
+            font-size: 1.2rem;
+            color: #9e9e9e;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards 1s;
+        }
+
+        .explore-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: transparent;
+            color: #39d353;
+            border: 2px solid #39d353;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards 1.5s;
+        }
+
+        .explore-btn:hover {
+            background-color: #39d353;
+            color: #121212;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(57, 211, 83, 0.3);
+        }
+
+        .explore-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .explore-btn:hover::before {
+            left: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(57, 211, 83, 0.2);
+            pointer-events: none;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes growLine {
+            from {
+                width: 0;
+            }
+            to {
+                width: 180px;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .background-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .circle1 {
+            top: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #39d353, transparent 70%);
+            animation: pulse 15s infinite alternate;
+        }
+
+        .circle2 {
+            bottom: -200px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #39d353, transparent 70%);
+            animation: pulse 12s infinite alternate-reverse;
+        }
+
+        /* Developer section styles */
+        .developers-section {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards 2s;
+        }
+
+        .developers-title {
+            color: #9e9e9e;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .developers-list {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .developer {
+            color: #6e6e6e;
+            font-size: 0.85rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .developer:hover {
+            color: #39d353;
+            transform: translateY(-3px);
+        }
+
+        .developer::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #39d353;
+            transition: width 0.3s ease;
+        }
+
+        .developer:hover::after {
+            width: 100%;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.15;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3.5rem;
+            }
+            
+            .slogan {
+                font-size: 1rem;
+            }
+
+            .developers-list {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-circle circle1"></div>
+    <div class="background-circle circle2"></div>
+    
+    <div class="container">
+        <h1 class="logo">Caters Hub</h1>
+        <p class="slogan">Culinary Excellence For Every Occasion</p>
+        <a href="dashboardlogoff.php" class="explore-btn">Explore Us</a>
+    </div>
+
+    <div class="developers-section">
+        <p class="developers-title">Developers</p>
+        <div class="developers-list">
+            <span class="developer">Shreesha</span>
+            <span class="developer">Shashank</span>
+            <span class="developer">Akshay</span>
+        </div>
+    </div>
+
+    <?php
+    // You can add PHP code here for dynamic content or form processing
+    // This is a simple example that could be expanded
+    $currentYear = date("Y");
+    ?>
+
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const body = document.querySelector('body');
+            const particleCount = 40;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 15 + 5;
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight;
+                const duration = Math.random() * 30 + 10;
+                const delay = Math.random() * 5;
+                
+                // Apply styles
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}px`;
+                particle.style.top = `${posY}px`;
+                particle.style.opacity = Math.random() * 0.2;
+                particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                
+                body.appendChild(particle);
+            }
+        }
+
+        // Button hover animation enhancement
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            const exploreBtn = document.querySelector('.explore-btn');
+            
+            exploreBtn.addEventListener('mouseover', function() {
+                this.style.transition = 'all 0.3s ease';
+            });
+
+            // Add hover effect for developer names
+            const developers = document.querySelectorAll('.developer');
+            developers.forEach(dev => {
+                dev.addEventListener('mouseover', function() {
+                    this.style.transition = 'all 0.3s ease';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
